@@ -5,6 +5,8 @@ let diametro = 15;
 let velocidadeXBolinha = 6;
 let velocidadeYBolinha = 6;
 
+let raio = diametro / 2;
+
 function setup() {
     createCanvas(600, 400);
 }
@@ -15,10 +17,10 @@ function draw() {
     xBolinha += velocidadeXBolinha;
     yBolinha += velocidadeYBolinha;
 
-    if (xBolinha > width || xBolinha < 0) {
+    if (xBolinha + raio > width || xBolinha - raio < 0) {
         velocidadeXBolinha *= -1;
     }
-    if (yBolinha > height || yBolinha < 0) {
+    if (yBolinha + raio > height || yBolinha - raio < 0) {
         velocidadeYBolinha *= -1;
     }
 }

@@ -4,6 +4,12 @@ let yBolinha = 200;
 let diametro = 15;
 let raio = diametro / 2;
 
+//variáveis da raquete
+let xRaquete = 5;
+let yRaquete = 150;
+let raqueteComprimento = 10;
+let raqueteAltura = 90;
+
 //velocidade da bolinha
 let velocidadeXBolinha = 6;
 let velocidadeYBolinha = 6;
@@ -17,10 +23,15 @@ function draw() {
     mostraBolinha();
     movimentaBolinha();
     verificaColisaoBorda();
+    mostraRaquete();
 }
 
 function mostraBolinha() {
     circle(xBolinha, yBolinha, diametro)
+}
+
+function mostraRaquete() {
+    rect(xRaquete, yRaquete, raqueteComprimento, raqueteAltura);
 }
 
 function movimentaBolinha() {

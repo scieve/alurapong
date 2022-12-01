@@ -1,7 +1,7 @@
 //variáveis da bolinha
 let xBolinha = 300;
 let yBolinha = 200;
-let diametro = 15;
+let diametro = 10;
 let raio = diametro / 2;
 
 //variáveis da raquete
@@ -16,8 +16,12 @@ let yRaqueteOponente = 150;
 let velocidadeYOponente;
 
 //velocidade da bolinha
-let velocidadeXBolinha = 2;
-let velocidadeYBolinha = 2;
+let velocidadeXBolinha = 6;
+let velocidadeYBolinha = 6;
+
+//placar do jogo
+let meusPontos = 0;
+let pontosDoOponente = 0;
 
 let colidiu = false;
 
@@ -34,8 +38,11 @@ function draw() {
     mostraRaquete(xRaqueteOponente, yRaqueteOponente);
     movimentaMinhaRaquete();
     //verificaColisaoRaquete();
-    colisaoMinhaRaqueteBiblioteca();
+    verificaColisaoRaquete(xRaqueteOponente, yRaqueteOponente);
+    verificaColisaoRaquete(xRaquete, yRaquete);
     movimentaRaqueteOponente();
+    incluiPlacar();
+    marcaPonto();
 }
 
 function mostraBolinha() {
@@ -62,8 +69,8 @@ function movimentaMinhaRaquete() {
     }
 }
 
-function colisaoMinhaRaqueteBiblioteca() {
-    colidiu = collideRectCircle(xRaquete, yRaquete, raqueteComprimento, raqueteAltura, xBolinha, yBolinha, raio);
+function verificaColisaoRaquete(x, y) {
+    colidiu = collideRectCircle(x, y, raqueteComprimento, raqueteAltura, xBolinha, yBolinha, raio);
     if (colidiu) {
         velocidadeXBolinha *= -1;
     }
@@ -91,4 +98,19 @@ function verificaColisaoBorda() {
 function movimentaRaqueteOponente() {
     velocidadeYOponente = yBolinha - yRaqueteOponente - raqueteComprimento / 2 - 30;
     yRaqueteOponente += velocidadeYOponente;
+}
+
+function incluiPlacar() {
+    fill(255);
+    text(meusPontos, 278, 26);
+    text(pontosDoOponente, 321, 26);
+}
+
+function marcaPonto() {
+    if (xBolinha > 590) {
+        meusPontos += 1;
+    }
+    if (xBolinha < 10) {
+        pontosDoOponente += 1;
+    }
 }

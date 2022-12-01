@@ -74,10 +74,10 @@ function movimentaBolinha() {
 }
 
 function movimentaMinhaRaquete() {
-    if (keyIsDown(UP_ARROW)) {
+    if (keyIsDown(87)) {
         yRaquete -= 10;
     }
-    if (keyIsDown(DOWN_ARROW)) {
+    if (keyIsDown(83)) {
         yRaquete += 10;
     }
 }
@@ -108,12 +108,22 @@ function verificaColisaoBorda() {
     }
 }*/
 
+function movimentaRaqueteOponente() {
+    if (keyIsDown(UP_ARROW)) {
+        yRaqueteOponente -= 10;
+    }
+    if (keyIsDown(DOWN_ARROW)) {
+        yRaqueteOponente += 10;
+    }
 
+}
+
+/*
 
 function movimentaRaqueteOponente() {
     velocidadeYOponente = yBolinha - yRaqueteOponente - raqueteComprimento / 2 - 30;
     yRaqueteOponente += velocidadeYOponente;
-}
+}*/
 
 function incluiPlacar() {
     stroke(255);
